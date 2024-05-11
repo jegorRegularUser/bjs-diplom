@@ -5,7 +5,7 @@ user.loginFormCallback = data => {
         if (res.success) {
             location.reload()
         }
-        else alert(res.error)
+        else user.setLoginErrorMessage(res.error)
     })
 }
 user.registerFormCallback = data => {
@@ -13,6 +13,6 @@ user.registerFormCallback = data => {
         if (res.success) {
             location.reload()
         }
-        else alert(res.error)
+        else user.setRegisterErrorMessage(res.error)
     })
 }

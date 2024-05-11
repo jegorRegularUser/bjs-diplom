@@ -33,9 +33,9 @@ moneyManager.addMoneyCallback = data => {
     ApiConnector.addMoney(data, res => {
         if (res.success) {
             ProfileWidget.showProfile(res.data);
-            favoritesWidget.setMessage(res.success, 'Пополнение прошло успешно')
+            moneyManager.setMessage(res.success, 'Пополнение прошло успешно')
         }
-        else favoritesWidget.setMessage(res.success, 'Пополнение не удалось')
+        else moneyManager.setMessage(res.success, res.error)
     })
 }
 
@@ -43,9 +43,9 @@ moneyManager.conversionMoneyCallback = data => {
     ApiConnector.convertMoney(data, res => {
         if (res.success) {
             ProfileWidget.showProfile(res.data);
-            favoritesWidget.setMessage(res.success, 'Конвертация прошла успешно')
+            moneyManager.setMessage(res.success, 'Конвертация прошла успешно')
         }
-        else favoritesWidget.setMessage(res.success, 'Конвертация не удалась')
+        else moneyManager.setMessage(res.success,  res.error)
     })
 }
 
@@ -53,9 +53,9 @@ moneyManager.sendMoneyCallback = data => {
     ApiConnector.transferMoney(data, res => {
         if (res.success) {
             ProfileWidget.showProfile(res.data);
-            favoritesWidget.setMessage(res.success, 'Перевод прошел успешно')
+            moneyManager.setMessage(res.success, 'Перевод прошел успешно')
         }
-        else favoritesWidget.setMessage(res.success, 'Перевод не удался')
+        else moneyManager.setMessage(res.success,  res.error)
     })
 }
 
@@ -75,7 +75,7 @@ favoritesWidget.addUserCallback = data => {
             moneyManager.updateUsersList(res.data);
             favoritesWidget.setMessage(res.success, 'Пользователь добавлен успешно')
         }
-        else favoritesWidget.setMessage(res.success, 'Не удалось добавить пользователя')
+        else favoritesWidget.setMessage(res.success,  res.error)
     })
 }
 
@@ -87,6 +87,6 @@ favoritesWidget.removeUserCallback = data => {
             moneyManager.updateUsersList(res.data);
             favoritesWidget.setMessage(res.success, 'Пользователь удален успешно')
         }
-        else favoritesWidget.setMessage(res.success, 'Не удалось удалить пользователя')
+        else favoritesWidget.setMessage(res.success,  res.error)
     })
 }
